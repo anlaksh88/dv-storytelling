@@ -7,7 +7,7 @@ async function init() {
 
 
   
-    var margin = {top: 100, right: 100, bottom: 100, left: 100},
+    var margin = {top: 100, right: 100, bottom: 100, left: 200},
     width =  1000 - margin.left - margin.right,
     height = 2000 - margin.top - margin.bottom;
 
@@ -49,8 +49,8 @@ async function init() {
                 .duration(200)		
                 .style("opacity", .9);		
             div.html("Country: "+d.Country + "<br/> per capita income: "  + d.Economy_GDP + "<br/>Happiness Rank: " + d.Happiness_Rank)	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY - 30) + "px");		
+                .style("left", (d3.event.pageX - 300) + "px")		
+                .style("top", (d3.event.pageY - 200) + "px");		
             })					
             .on("mouseout", function(d) {		
                 div.transition()		
@@ -75,12 +75,12 @@ async function init() {
         //type=d3.annotationCalloutCircle;
         let type=d3.annotationLabel;
         let annoConnector="dot";
-        let annoTitle = "Norway has the highest happiness score"
+        let annoTitle = "Norway does not have highest per capita income. But it's income is significantly more than most countries."
         let annoText = "Norway ranks no 1 in happiness index"
         
         const thisAnno = [{
 		note: {
-			label:annoText,
+			//label:annoText,
 			title:annoTitle,
 			wrap:250,
 			align:"middle",
@@ -105,7 +105,7 @@ async function init() {
 			.attr("class","annotation-group")
       .call(makeThis);
   }
-  svg.call(createAnno([698.5, 5]));
+  svg.call(createAnno([100.5, 5]));
 }
 
 init();
